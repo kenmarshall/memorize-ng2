@@ -1,0 +1,17 @@
+.big-text {
+	font-family: Helvetica;
+	font-size: 25px;
+}
+
+.center-modal {
+	margin: 20% auto;
+}
+
+@media (max-width: 560px) {
+  #content .modal.fade.in {
+   margin: 20% auto;
+  }
+}
+
+
+

@@ -1,0 +1,59 @@
+<br>
+<div class="container">
+
+	<div class="row">
+		<form  (ngSubmit)="submitWord($event.target[0].value)" #scriptureForm>
+			<div class="well well-lg big-text">
+				<span *ngFor="let element of textElements" [ngSwitch]="element.type">
+					<span *ngSwitchCase="'normal'">{{element.value}}</span>
+					<span *ngSwitchCase="'removed'">{{element.value | underscored }}</span>
+					<sup *ngSwitchCase="'verseNumber'">{{element.value}}</sup>					
+					<app-word-input *ngSwitchCase="'input'" [length]="element.value.length*25"></app-word-input>
+				</span>
+			</div>
+		</form>
+	</div>
+	
+	<!-- Buttons -->
+	<div class="row">	
+		<button (click)="reset()" class="btn btn-md btn-default">Reset</button>		
+		<div class="btn-group pull-right">
+		  <button (click)="removeRandomWords(wordInput)" type="button" class="btn btn-default">Remove {{wordCountText}}</button>
+		  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    <span class="caret"></span>
+		    <span class="sr-only">Toggle Dropdown</span>
+		  </button>
+		  <ul class="dropdown-menu">
+		    <li><a (click)="removeWordCount = 1">1</a></li>
+		    <li><a (click)="removeWordCount = 2">2</a></li>
+		    <li><a (click)="removeWordCount = 3">3</a></li>
+		  </ul>
+		</div>
+	</div>
+
+
+
+	<div class="modal fade " bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
+	     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-sm center-modal">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" aria-label="Close" (click)="staticModal.hide()">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	        <h4 class="modal-title text-center">Well Done!</h4>
+	      </div>
+	      <div class="modal-body text-center">
+	        Would you like to try again?
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+
+</div>
+
+
+
+
+

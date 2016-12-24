@@ -1,0 +1,12 @@
+<div class="container top">
+	
+	<div class="row">
+		<app-scripture-search (onSearchResult)="handleSearchResult($event)"></app-scripture-search>
+	</div>
+	<div class="row">
+		<app-scripture-view-box *ngIf="searchResultData" [data]="searchResultData"></app-scripture-view-box>
+		<div *ngIf="showLoader" class="loader"></div>
+	</div>
+	
+</div>
+
