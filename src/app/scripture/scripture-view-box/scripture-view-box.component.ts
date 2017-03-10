@@ -39,8 +39,8 @@ export class ScriptureViewBoxComponent implements OnInit {
   @ViewChild('staticModal') myModal: ModalDirective;
   
 	@Input() 
-	set data(data: string){
-		this._textElements = this.textManager.initializeData(data);
+	set data(data: any){
+		this._textElements = this.textManager.initializeData(data.text);
 	} 
 
   @Input() showLoader: boolean;
@@ -59,7 +59,7 @@ export class ScriptureViewBoxComponent implements OnInit {
 
   ngAfterViewInit(){
     console.log('afterviewinit');
-    this.myModal.show(); 
+    //this.myModal.show(); 
   }
 
   ngDoCheck(){

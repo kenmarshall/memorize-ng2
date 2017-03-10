@@ -14,13 +14,18 @@ export class ScriptureComponent implements OnInit {
   ngOnInit() {
   }
 
-  handleSearchResult(res: Promise<string>){ 
+  handleSearchResult(res: Promise<any>){ 
     this.showLoader = true; 
-    console.log('searvh res');  
      res.then((res) => {
        this.showLoader = false;
-       this.searchResultData = res
-     });
+       this.searchResultData = res;
+     }).catch( this.handleError ).catch(() => this.showLoader = false);
+  }
+
+  private handleError(error: any): Promise<any> {
+    console.log('An error occured', error);
+ 
+    return Promise.reject(error.message || error);
   }
 
 }

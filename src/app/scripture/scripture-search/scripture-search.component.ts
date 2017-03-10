@@ -22,7 +22,7 @@ export class ScriptureSearchComponent implements OnInit {
   }
 
   search(query){  	
-  	let p = this._bibleService.getScriptureTest();
+  	let p = this._bibleService.getScripture(query);
     this.onSearchResult.emit(p);
   }
 
